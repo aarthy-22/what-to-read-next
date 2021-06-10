@@ -1,0 +1,61 @@
+body {
+    background-image: url(https://wallpaperaccess.com/full/124383.jpg);
+    font-size: 15px;
+    color: white;
+}
+
+.book-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: relative;
+}
+.book-item:hover .overlay {
+    opacity: 1;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
+
+.book-item  p {
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+    padding: 2px;
+}
+.header {
+    padding: 10px;
+    font-size: 25px;
+}
+.form {
+    padding:15px;
+    font-size:20px;
+}
+.row-heading {
+    font-size:20px;
+}
+.text {
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }

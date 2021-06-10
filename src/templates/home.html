@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Book Recommender</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
+</head>
+<body>
+
+<div class="header">
+  <h1>Book Suggestions</h1>
+  <p>Type a book you liked to see other books you might enjoy</p>
+</div>
+<div class="form">
+  <form action="{{ url_for('predict')}}"method="POST">
+    <label for="book_name">Book name:</label><br>
+    <input style="font-size:20px" type="text" id="book_name" name="book_name"><br>
+    <button style="font-size:20px; margin:20px" type="submit">Submit</button>
+  </form> 
+</div>
+
+{% if book_list %}
+<p class="row-heading">Books other users liked</p>
+<div class="book-flex">
+    {% for item in book_list %}
+    <div class = "book-item">
+      <div class="overlay">
+        <div class="text">
+          <p>Title: {{item.name}}</p>
+          <p>Author: {{item.author}}</p>
+          <p>Rating: {{item.rating}}</p>
+          <a href="https://www.goodreads.com/book/show/{{item.url}}">Goodreads url</a>
+        </div>
+      </div>
+      <img src="{{ item.img }}" alt="{{item.name}}" width="200px" height="300px"/>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if genre_book_list %}
+<p class="row-heading">Other books in this genre</p>
+<div class="book-flex">
+    {% for item in genre_book_list %}
+    <div class = "book-item">
+      <div class="overlay">
+        <div class="text">
+          <p>Title: {{item.name}}</p>
+          <p>Author: {{item.author}}</p>
+          <p>Rating: {{item.rating}}</p>
+          <a href="https://www.goodreads.com/book/show/{{item.url}}">Goodreads url</a>
+        </div>
+      </div>
+      <img src="{{ item.img }}" alt="{{item.name}}" width="200px" height="300px"/>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if no_data %}
+<div class="no books">
+  <p>We couldn't find that book. Try another book</p>
+</div>
+{% endif %}
+</body>
+</html>
